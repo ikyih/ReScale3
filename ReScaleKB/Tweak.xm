@@ -1,7 +1,9 @@
 #include <substrate.h>
 #include <dlfcn.h>
+#include <objc/runtime.h>
 
 #import <UIKit/UIKit.h>
+#import <rootless.h>
 
 @interface UIKeyboardImpl : UIView
 + (UIEdgeInsets)deviceSpecificPaddingForInterfaceOrientation:(NSInteger)arg1 inputMode:(id)arg2;
@@ -44,8 +46,10 @@
 
 %hook UIKeyboardLayoutStar
 - (void)setFrame:(CGRect)arg1 {
-	if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
-		%orig((CGRect){ CGPointZero, [UIKeyboardImpl keyboardSizeForInterfaceOrientation:UIApplication.sharedApplication.statusBarOrientation] });
+	UIInterfaceOrientation orientation = UIApplication.sharedApplication.statusBarOrientation;
+
+	if (UIInterfaceOrientationIsLandscape(orientation)) {
+		%orig((CGRect){ CGPointZero, [UIKeyboardImpl keyboardSizeForInterfaceOrientation:orientation] });
 
 		return;
 	}
@@ -55,9 +59,9 @@
 %end
 
 %ctor {
-	if (access("/var/lib/dpkg/info/tf.festival.rescale2.list", F_OK) == -1) return;
+	if (access(ROOT_PATH("/var/lib/dpkg/info/tf.festival.rescale2.list"), F_OK) == -1) return;
 
-	if (UIApplication.sharedApplication) {
+	if (objc_getClass("UIKeyboardImpl")) {
 		%init();
 	}
 }

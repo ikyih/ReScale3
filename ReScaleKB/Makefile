@@ -1,11 +1,12 @@
-ARCHS = armv7 arm64 arm64e
-TARGET = iphone:13.7:9.0
+ARCHS = arm64 arm64e
+TARGET = iphone:clang:latest:16.0
+THEOS_PACKAGE_SCHEME = rootless
 
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = ReScaleKB
 
 ReScaleKB_FILES = Tweak.xm
-ReScaleKB_CFLAGS = -fobjc-arc
+ReScaleKB_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 include $(THEOS_MAKE_PATH)/tweak.mk

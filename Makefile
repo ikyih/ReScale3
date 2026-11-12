@@ -1,4 +1,7 @@
-THEOS_DEVICE_IP = Janiks-iPhone-X.local
+ARCHS = arm64 arm64e
+TARGET = iphone:clang:latest:16.0
+THEOS_PACKAGE_SCHEME = rootless
+
 
 PACKAGE_VERSION = 1.0.5-1
 

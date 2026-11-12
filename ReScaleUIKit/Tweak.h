@@ -1,8 +1,11 @@
 #include <dlfcn.h>
 #include <spawn.h>
+#include <unistd.h>
+#include <sys/wait.h>
 #include <substrate.h>
 
 #import <UIKit/UIKit.h>
+#import <rootless.h>
 
 @class SBDashBoardIdleTimerController;
 
@@ -11,7 +14,7 @@
 - (void)autoLockPrefsChanged;				// iOS 9-10
 @end
 
-@interface SBIdleTimerDefaults
+@interface SBIdleTimerDefaults : NSObject
 - (void)setDisableAutoDim:(BOOL)arg1;
 @end
 
@@ -23,7 +26,7 @@
 
 @interface SBIdleTimerGlobalStateMonitor : NSObject
 + (id)sharedInstance;
-- (void)_updateAutoDimDisabled;				// iOS 13-14
+- (void)_updateAutoDimDisabled;				// iOS 13-27
 @end
 
 @interface SpringBoard : UIApplication

@@ -1,6 +1,8 @@
 #include <objc/runtime.h>
 #include <dlfcn.h>
 #include <spawn.h>
+#include <sys/wait.h>
+#import <rootless.h>
 #import <libactivator/libactivator.h>
 
 static NSString *bundleID = @"tf.festival.rescale2.activator-eventListener";
@@ -24,7 +26,7 @@ static LAActivator *_LASharedActivator;
 }
 
 + (void)load {
-	void *la = dlopen("/usr/lib/libactivator.dylib", RTLD_LAZY);
+	void *la = dlopen(ROOT_PATH("/usr/lib/libactivator.dylib"), RTLD_LAZY);
 	if (!la) {
 		NSLog(@"Failed to load libactivator");
 		_LASharedActivator = nil;
@@ -69,7 +71,6 @@ static LAActivator *_LASharedActivator;
 
 - (void)activator:(LAActivator *)activator didChangeToEventMode:(NSString *)eventMode {
 	[self dismiss];
-
 }
 
 // Incoming events
@@ -94,16 +95,17 @@ static LAActivator *_LASharedActivator;
 
 		pid_t pid;
 		int status;
-		const char* args[] = {"killall", "-9", "backboardd", "aggregated", NULL};
-		posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
-		waitpid(pid, &status, WEXITED);
+		const char *args[] = {"killall", "-9", "backboardd", "aggregated", NULL};
+		if (posix_spawn(&pid, ROOT_PATH("/usr/bin/killall"), NULL, NULL, (char *const *)args, NULL) == 0) {
+			waitpid(pid, &status, 0);
+		}
 	} else {
 		if ([self present]) {
 			[event setHandled:YES];
 		}
 	}
 }
-// Sent when a chorded event gets escalated (short hold becoems a long hold, for example)
+// Sent when a chorded event gets escalated (short hold becomes a long hold, for example)
 - (void)activator:(LAActivator *)activator abortEvent:(LAEvent *)event forListenerName:(NSString *)listenerName {
 	// Called when event is escalated to a higher event
 	// (short-hold sleep button becomes long-hold shutdown menu, etc)
