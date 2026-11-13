@@ -5,7 +5,7 @@
 #import <rootless.h>
 #import <libactivator/libactivator.h>
 
-static NSString *bundleID = @"tf.festival.rescale2.activator-eventListener";
+static NSString *bundleID = @"com.maiko.rescale3.activator-eventListener";
 static LAActivator *_LASharedActivator;
 
 @interface ReScaleActivatorListener : NSObject <LAListener>

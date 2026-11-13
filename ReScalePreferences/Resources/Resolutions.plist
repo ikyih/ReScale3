@@ -152,6 +152,66 @@
 			<key>screenScale</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2622</integer>
+			<key>canvas_width</key>
+			<integer>1206</integer>
+			<key>deviceType</key>
+			<string>iphone63-16pro</string>
+			<key>minOSVersion</key>
+			<string>18.0</string>
+			<key>screenScale</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2868</integer>
+			<key>canvas_width</key>
+			<integer>1320</integer>
+			<key>deviceType</key>
+			<string>iphone69-16promax</string>
+			<key>minOSVersion</key>
+			<string>18.0</string>
+			<key>screenScale</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2736</integer>
+			<key>canvas_width</key>
+			<integer>1260</integer>
+			<key>deviceType</key>
+			<string>iphone65-air</string>
+			<key>minOSVersion</key>
+			<string>26.0</string>
+			<key>screenScale</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2034</integer>
+			<key>canvas_width</key>
+			<integer>1398</integer>
+			<key>deviceType</key>
+			<string>iphoneduo-outer</string>
+			<key>minOSVersion</key>
+			<string>27.1</string>
+			<key>screenScale</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2670</integer>
+			<key>canvas_width</key>
+			<integer>1878</integer>
+			<key>deviceType</key>
+			<string>iphoneduo-inner</string>
+			<key>minOSVersion</key>
+			<string>27.1</string>
+			<key>screenScale</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>1</key>
 	<array>
@@ -250,6 +310,30 @@
 			<string>ipad129</string>
 			<key>minOSVersion</key>
 			<string>9.1</string>
+			<key>screenScale</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2420</integer>
+			<key>canvas_width</key>
+			<integer>1668</integer>
+			<key>deviceType</key>
+			<string>ipad11-m4</string>
+			<key>minOSVersion</key>
+			<string>17.4</string>
+			<key>screenScale</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>canvas_height</key>
+			<integer>2752</integer>
+			<key>canvas_width</key>
+			<integer>2064</integer>
+			<key>deviceType</key>
+			<string>ipad13-m4</string>
+			<key>minOSVersion</key>
+			<string>17.4</string>
 			<key>screenScale</key>
 			<integer>2</integer>
 		</dict>

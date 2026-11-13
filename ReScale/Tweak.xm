@@ -27,7 +27,7 @@ static BOOL isCanvasKey(CFStringRef key, CFStringRef applicationID) {
 }
 
 %ctor {
-	if (access(ROOT_PATH("/var/lib/dpkg/info/tf.festival.rescale2.list"), F_OK) == -1) return;
+	if (access(ROOT_PATH("/var/lib/dpkg/info/com.maiko.rescale3.list"), F_OK) == -1) return;
 
 	%init();
 }

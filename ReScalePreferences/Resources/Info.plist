@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>ReScalePreferences</string>
 	<key>CFBundleIdentifier</key>
-	<string>tf.festival.rescale2</string>
+	<string>com.maiko.rescale3</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

@@ -1,4 +1,4 @@
-Package: tf.festival.rescale2
+Package: com.maiko.rescale3
 Name: ReScale 3
 Depends: ellekit, preferenceloader, firmware (>= 16.0)
 Version: 1.0
