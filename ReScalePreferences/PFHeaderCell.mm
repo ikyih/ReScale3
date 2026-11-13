@@ -46,13 +46,25 @@
 
 - (void)prepareHeaderImage:(PSSpecifier*)specifier {
 	headerImageViewContainer = [[UIView alloc] initWithFrame:self.bounds];
-	[headerImageViewContainer setTranslatesAutoresizingMaskIntoConstraints:NO];
+	headerImageViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
- 	if (specifier.properties[@"image"]) {
-		headerImageView = [[UIImageView alloc] initWithImage:[[UIImage alloc] initWithContentsOfFile:specifier.properties[@"image"]]];
-		[headerImageView setContentMode:UIViewContentModeCenter];
+	NSString* imagePath = specifier.properties[@"image"];
+	if (imagePath) {
+		// Load from this bundle by name so the path works on rootful and rootless
+		NSBundle* bundle = [NSBundle bundleForClass:self.class];
+		NSString* imageName = [[imagePath lastPathComponent] stringByDeletingPathExtension];
 
-		[headerImageViewContainer addSubview:headerImageView];
+		UIImage* image = [UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
+		if (!image) {
+			image = [UIImage imageWithContentsOfFile:imagePath];
+		}
+
+		if (image) {
+			headerImageView = [[UIImageView alloc] initWithImage:image];
+			[headerImageView setContentMode:UIViewContentModeCenter];
+
+			[headerImageViewContainer addSubview:headerImageView];
+		}
 	}
 
 	self.backgroundColor = nil;

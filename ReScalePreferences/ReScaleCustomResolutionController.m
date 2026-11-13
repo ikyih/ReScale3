@@ -1,4 +1,7 @@
 #include <spawn.h>
+#include <sys/wait.h>
+
+#import <rootless.h>
 
 #include "ReScaleCustomResolutionController.h"
 
@@ -136,8 +139,9 @@
 		pid_t pid;
 		int status;
 		const char* args[] = {"killall", "-9", "backboardd", "aggregated", NULL};
-		posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
-		waitpid(pid, &status, WEXITED);
+		if (posix_spawn(&pid, ROOT_PATH("/usr/bin/killall"), NULL, NULL, (char* const*)args, NULL) == 0) {
+			waitpid(pid, &status, 0);
+		}
 	}];
 	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:[self.class localizedStringForKey:@"RESTART_SPRINGBOARD_CANCEL" value:nil table:@"Root"] style:UIAlertActionStyleCancel handler:nil];
 

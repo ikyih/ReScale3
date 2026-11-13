@@ -12,7 +12,7 @@
 			<key>background</key>
 			<string>#FF2D55</string>
 			<key>image</key>
-			<string>/Library/PreferenceBundles/ReScalePreferences.bundle/header.png</string>
+			<string>header.png</string>
 			<key>height</key>
 			<integer>158</integer>
 		</dict>
@@ -28,7 +28,7 @@
 			<key>default</key>
 			<string></string>
 			<key>defaults</key>
-			<string>com.maiko.rescale3</string>
+			<string>tf.festival.rescale</string>
 			<key>key</key>
 			<string>statusBarOverride</string>
 			<key>label</key>
