@@ -119,8 +119,8 @@
 	"RESOLUTION_APPLIED_CANCEL" = "Cancel (%d)";
 
 	"BUTTON_WHATS_NEW" = "What's New";
-	"BUTTON_REPORT_ISSUE" = "Report Issue";
-	"BUTTON_MAKE_DONATION" = "Donate";
+	"BUTTON_REPORT_ISSUE" = "Github";
+	"BUTTON_ORIGINAL_SRC" = "Re:Scale 2";
 
 	"COPYRIGHT_FOOTER" = "Re:Scale 3 (1.0b) – Made with ❤️ maiko";
 

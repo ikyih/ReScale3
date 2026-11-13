@@ -85,16 +85,16 @@
 - (void)applyCanvasWidth:(NSUInteger)canvasWidth canvasHeight:(NSUInteger)canvasHeight {
 	// if (SYSTEM_VERSION_LESS_THAN(@"10.0")) {
 	// 	// iOS 9 (possibily other versions as well) invert the width and height
-	// 	CFPreferencesSetAppValue(CFSTR("canvas_height"), (CFTypeRef)@(canvasWidth), CFSTR("tf.festival.rescale"));
-	// 	CFPreferencesSetAppValue(CFSTR("canvas_width"), (CFTypeRef)@(canvasHeight), CFSTR("tf.festival.rescale"));
+	// 	CFPreferencesSetAppValue(CFSTR("canvas_height"), (CFTypeRef)@(canvasWidth), CFSTR("com.maiko.rescale3"));
+	// 	CFPreferencesSetAppValue(CFSTR("canvas_width"), (CFTypeRef)@(canvasHeight), CFSTR("com.maiko.rescale3"));
 	// } else {
-		CFPreferencesSetAppValue(CFSTR("canvas_width"), (CFTypeRef)@(canvasWidth), CFSTR("tf.festival.rescale"));
-		CFPreferencesSetAppValue(CFSTR("canvas_height"), (CFTypeRef)@(canvasHeight), CFSTR("tf.festival.rescale"));
+		CFPreferencesSetAppValue(CFSTR("canvas_width"), (CFTypeRef)@(canvasWidth), CFSTR("com.maiko.rescale3"));
+		CFPreferencesSetAppValue(CFSTR("canvas_height"), (CFTypeRef)@(canvasHeight), CFSTR("com.maiko.rescale3"));
 
-		CFPreferencesSetAppValue(CFSTR("confirmedResolution"), (CFTypeRef)@NO, CFSTR("tf.festival.rescale"));
+		CFPreferencesSetAppValue(CFSTR("confirmedResolution"), (CFTypeRef)@NO, CFSTR("com.maiko.rescale3"));
 	// }
 
-	CFPreferencesAppSynchronize(CFSTR("tf.festival.rescale"));
+	CFPreferencesAppSynchronize(CFSTR("com.maiko.rescale3"));
 }
 
 - (void)applyCustomResolution {
@@ -247,12 +247,13 @@
     return _customCanvasWidth ? @(_customCanvasWidth) : nil;
 }
 
-- (void)makeDonation {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://paypal.me/SniperGER"] options:@{} completionHandler:nil];
-}
 
 - (void)reportIssue {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/SniperGER/LockWatch2"] options:@{} completionHandler:nil];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/ikyih/ReScale3"] options:@{} completionHandler:nil];
+}
+
+- (void)showoriginalgithub {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/SniperGER/ReScale2"] options:@{} completionHandler:nil];
 }
 
 - (void)resetResolution {
@@ -263,10 +264,10 @@
 																	  preferredStyle:(isiPad ? UIAlertControllerStyleAlert : UIAlertControllerStyleActionSheet)];
 
 	UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:[self.class localizedStringForKey:@"RESET_RESOLUTION_CONFIRM" value:nil table:@"Root"] style:UIAlertActionStyleDestructive handler:^(UIAlertAction* action) {
-		CFPreferencesSetAppValue(CFSTR("canvas_width"), NULL, CFSTR("tf.festival.rescale"));
-		CFPreferencesSetAppValue(CFSTR("canvas_height"), NULL, CFSTR("tf.festival.rescale"));
+		CFPreferencesSetAppValue(CFSTR("canvas_width"), NULL, CFSTR("com.maiko.rescale3"));
+		CFPreferencesSetAppValue(CFSTR("canvas_height"), NULL, CFSTR("com.maiko.rescale3"));
 
-		CFPreferencesAppSynchronize(CFSTR("tf.festival.rescale"));
+		CFPreferencesAppSynchronize(CFSTR("com.maiko.rescale3"));
 
 		[self respring];
 	}];
@@ -319,7 +320,7 @@
 	}
 
 	CFArrayRef storedResolutions;
-	if ((storedResolutions = (CFArrayRef)CFPreferencesCopyAppValue(CFSTR("customResolutions"), CFSTR("tf.festival.rescale")))) {
+	if ((storedResolutions = (CFArrayRef)CFPreferencesCopyAppValue(CFSTR("customResolutions"), CFSTR("com.maiko.rescale3")))) {
 		NSMutableArray* customResolutions = [(__bridge NSArray*)storedResolutions mutableCopy];
 
 		[customResolutions addObject:@{
@@ -327,7 +328,7 @@
 			@"canvas_height": @(_customCanvasHeight)
 		}];
 
-		CFPreferencesSetAppValue(CFSTR("customResolutions"), (CFPropertyListRef)customResolutions, CFSTR("tf.festival.rescale"));
+		CFPreferencesSetAppValue(CFSTR("customResolutions"), (CFPropertyListRef)customResolutions, CFSTR("com.maiko.rescale3"));
 	} else {
 		NSArray* customResolutions = @[
 			@{
@@ -336,7 +337,7 @@
 			}
 		];
 
-		CFPreferencesSetAppValue(CFSTR("customResolutions"), (CFPropertyListRef)customResolutions, CFSTR("tf.festival.rescale"));
+		CFPreferencesSetAppValue(CFSTR("customResolutions"), (CFPropertyListRef)customResolutions, CFSTR("com.maiko.rescale3"));
 	}
 
 	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:[self.class localizedStringForKey:@"CUSTOM_RESOLUTION_SAVED_TITLE" value:nil table:@"Root"]
