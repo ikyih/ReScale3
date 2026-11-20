@@ -3,7 +3,7 @@ TARGET = iphone:clang:latest:16.0
 THEOS_PACKAGE_SCHEME = rootless
 
 
-PACKAGE_VERSION = 1.0.5-1
+PACKAGE_VERSION = 1.0b
 
 INSTALL_TARGET_PROCESSES = backboardd aggregated
 # INSTALL_TARGET_PROCESSES = Preferences
